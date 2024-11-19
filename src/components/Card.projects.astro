@@ -23,14 +23,14 @@ const getRepoLanguages = async (repo) => {
 };
 
 const languageImages = {
-  ASTRO: "https://brandonroberts.dev/assets/posts/astro-logo.jpg",
+  Astro: "https://brandonroberts.dev/assets/posts/astro-logo.jpg",
   Java: "https://codersfree.nyc3.cdn.digitaloceanspaces.com/posts/operadores-relacionales-en-java.jpg",
   PHP: "https://victorroblesweb.es/wp-content/uploads/2016/05/PHP_Logo.png",
   NODE: "https://ih1.redbubble.net/image.241202237.4263/st,small,507x507-pad,600x600,f8f8f8.u28.jpg",
 };
 
 const getRepoImage = (languages) => {
-  const priorityLanguages = ["PHP", "ASTRO", "Java", "NODE"];
+  const priorityLanguages = ["PHP", "Astro", "Java", "NODE"];
 
   for (const language of priorityLanguages) {
     if (languages.includes(language)) {
@@ -38,7 +38,7 @@ const getRepoImage = (languages) => {
     }
   }
 
-  return "https://default-image.com/unknown.png";
+  return "https://devsoft.io/wp-content/uploads/2021/05/mejores-lenguajes-de-programacion-2018.jpg";
 };
 ---
 
