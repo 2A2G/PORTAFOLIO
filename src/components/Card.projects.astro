@@ -1,37 +1,95 @@
-<article
-  class="group flex rounded-md max-w-sm flex-col overflow-hidden border border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300"
->
-  <div class="h-44 md:h-64 overflow-hidden">
-    <img
-      src="https://penguinui.s3.amazonaws.com/component-assets/card-img-1.webp"
-      class="object-cover transition duration-700 ease-out group-hover:scale-105"
-      alt="project image"
-    />
-  </div>
-  <div class="flex flex-col gap-4 p-6">
-    <span class="text-sm font-medium">Technologies</span>
-    <h3
-      class="text-balance text-xl lg:text-2xl font-bold text-neutral-900 dark:text-white"
-      aria-describedby="featureDescription"
-    >
-      Project Title
-    </h3>
-    <p id="featureDescription" class="text-pretty text-sm">
-      Project description goes here.
-    </p>
-    <div class="flex flex-wrap gap-2 mt-4">
-      <span class="bg-cyan-500 text-white py-1 px-2 rounded-full"
-        >JavaScript</span
-      >
-      <span class="bg-green-500 text-white py-1 px-2 rounded-full">Node.js</span
-      >
-    </div>
-    <a
-      href="https://github.com/username/repo-name"
-      class="mt-4 text-blue-500 hover:text-blue-700"
-      target="_blank"
-    >
-      View on GitHub
-    </a>
-  </div>
-</article>
+---
+import { getGitHubRepos } from "../ultils/github.js";
+
+const username = "2A2G";
+let repos = [];
+
+try {
+  repos = await getGitHubRepos(username);
+} catch (error) {
+  console.error("Error al obtener los repositorios:", error);
+}
+
+const getRepoLanguages = async (repo) => {
+  const languagesResponse = await fetch(repo.languages_url);
+  if (!languagesResponse.ok) {
+    console.error(
+      `Error al obtener los lenguajes para el repositorio ${repo.name}`
+    );
+    return [];
+  }
+  const languages = await languagesResponse.json();
+  return Object.keys(languages);
+};
+
+const languageImages = {
+  JavaScript:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+  Java: "https://codersfree.nyc3.cdn.digitaloceanspaces.com/posts/operadores-relacionales-en-java.jpg",
+  PHP: "https://victorroblesweb.es/wp-content/uploads/2016/05/PHP_Logo.png",
+  NODE: "https://ih1.redbubble.net/image.241202237.4263/st,small,507x507-pad,600x600,f8f8f8.u28.jpg",
+};
+
+const getRepoImage = (languages) => {
+  const priorityLanguages = ["PHP", "JavaScript", "Java", "NODE"];
+
+  for (const language of priorityLanguages) {
+    if (languages.includes(language)) {
+      return languageImages[language];
+    }
+  }
+
+  return "https://default-image.com/unknown.png";
+};
+---
+
+<div class="flex flex-wrap gap-8 justify-center">
+  {
+    repos.map(async (repo) => {
+      const languages = await getRepoLanguages(repo);
+      const repoImage = getRepoImage(languages);
+      return (
+        <article class="group flex rounded-md max-w-sm flex-col overflow-hidden border border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
+          <div class="h-44 md:h-64 overflow-hidden">
+            <img
+              src={repoImage}
+              class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-105"
+              alt="Project Image"
+            />
+          </div>
+          <div class="flex flex-col gap-4 p-6">
+            <span class="text-sm font-medium">Technologies</span>
+            <h3
+              class="text-balance text-xl lg:text-2xl font-bold text-neutral-900 dark:text-white"
+              aria-describedby="featureDescription"
+            >
+              {repo.name}
+            </h3>
+            <p id="featureDescription" class="text-pretty text-sm">
+              {repo.description || "No description available."}
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              {languages.map((language) => (
+                <span
+                  key={language}
+                  class="bg-cyan-500 text-white py-1 px-2 rounded-full"
+                >
+                  {language}
+                </span>
+              ))}
+            </div>
+            <div class="mt-auto">
+              <a
+                href={repo.html_url}
+                class="mt-4 text-blue-500 hover:text-blue-700 block"
+                target="_blank"
+              >
+                Ver en GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+      );
+    })
+  }
+</div>
