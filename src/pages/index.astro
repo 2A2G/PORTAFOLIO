@@ -1,13 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
 import Linkedin from "../components/svg/Linkedin.astro";
 import Git from "../components/svg/Git.astro";
+import icon from "../img/icon2.png";
 ---
 
 <Layout title="MI PORTAFOLIO">
-  <Navbar />
-  <div class="container mx-auto px-4 py-40">
+  <div class="mx-auto px-4 py-24">
     <div class="row flex flex-wrap justify-around items-center">
       <!-- Texto a la izquierda -->
       <div class="col-12 md:col-6 text-white py-10 text-center md:text-left">
@@ -39,7 +38,7 @@ import Git from "../components/svg/Git.astro";
         style="border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;"
       >
         <img
-          src="https://aguacatec.es/wp-content/uploads/2023/10/e5a978b8-6772-4c85-a50e-15581af7d483.png"
+          src={icon.src}
           alt="Aldair"
           class="rounded-full object-cover"
           style="max-width: 100%; height: auto; width: 300px; max-height: 300px;"
