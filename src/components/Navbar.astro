@@ -2,18 +2,15 @@
   <div
     class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between text-white"
   >
-    <!-- Logo -->
     <div class="text-xl font-bold">
       <a href="/">Mi Portafolio</a>
     </div>
 
-    <!-- Botón hamburguesa para móviles -->
     <button
       id="menu-toggle"
       class="text-white md:hidden focus:outline-none"
       aria-label="Abrir menú"
     >
-      <!-- Ícono dinámico -->
       <svg
         id="icon-open"
         xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +41,6 @@
       </svg>
     </button>
 
-    <!-- Links de navegación -->
     <div
       id="menu"
       class="hidden flex-col md:flex md:flex-row md:space-x-8 text-center space-y-4 md:space-y-0"
@@ -84,16 +80,13 @@
   const iconClose = document.getElementById("icon-close");
 
   toggleButton.addEventListener("click", () => {
-    // Alternar clases para mostrar/ocultar el menú
     menu.classList.toggle("hidden");
     menu.classList.toggle("flex");
 
-    // Cambiar el ícono según el estado del menú
     iconOpen.classList.toggle("hidden");
     iconClose.classList.toggle("hidden");
   });
 
-  // Cerrar el menú al hacer clic fuera
   document.addEventListener("click", (e) => {
     if (!toggleButton.contains(e.target) && !menu.contains(e.target)) {
       menu.classList.add("hidden");

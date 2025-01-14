@@ -28,7 +28,6 @@ const images = [
 
     <section class="bg-dark-gray p-8 rounded-lg shadow-lg text-white">
       <article class="flex flex-wrap md:flex-nowrap items-center gap-6">
-        <!-- Contenedor de imágenes superpuestas -->
         <div class="relative w-full md:w-1/2 h-80 md:h-96 image-container">
           {
             images.map((img, index) => (
@@ -48,7 +47,6 @@ const images = [
           }
         </div>
 
-        <!-- Información del proyecto -->
         <div class="w-full md:w-1/2 mt-8 md:mt-0 md:pl-8">
           <h2 class="text-3xl font-semibold mb-4">StudentChoice</h2>
           <p class="mb-6">
@@ -115,7 +113,6 @@ const images = [
     </section>
   </div>
 
-  <!-- Script para rotación automática -->
   <script>
     let currentIndex = 0;
     const imageContainer = document.querySelector(".image-container");
