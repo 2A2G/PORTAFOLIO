@@ -4,18 +4,19 @@ import image3 from "../img/icon2.png";
 ---
 
 <Layout title="Contacto">
-  <section
-    class="mx-auto px-6 py-16 bg-gray-900 text-white flex flex-col items-center text-center space-y-8"
+  <div
+    class="mx-auto px-6 py-16 text-white flex flex-col items-center text-center space-y-8"
   >
     <!-- Icon -->
-    <div class="w-16 h-16">
+    <div class="w-72 h-72">
       <img
         src={image3.src}
         alt="Icono representativo de contacto"
-        class="w-full h-full object-contain"
+        class="w-full h-full object-contain rounded-full"
       />
     </div>
 
+    <!-- Title and Description -->
     <div>
       <h1 class="text-4xl font-extrabold">¡Contáctame!</h1>
       <p class="mt-4 text-lg max-w-2xl leading-relaxed">
@@ -26,34 +27,39 @@ import image3 from "../img/icon2.png";
     </div>
 
     <!-- Social Links -->
-    <div>
+    <div class="flex flex-wrap justify-center gap-4 mt-6">
       <a
-        href="https://github.com/tuusuario"
+        href="https://github.com/2A2G"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-blue-500 hover:text-blue-400"
-        aria-label="Visita mi perfil de GitHub"
+        class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-400"
       >
-        <i class="fab fa-github text-2xl"></i>
+        GitHub
       </a>
       <a
-        href="https://www.linkedin.com/in/tuusuario"
+        href="https://www.linkedin.com/in/aldair-gutierrez-guerrero"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-blue-500 hover:text-blue-400"
-        aria-label="Conéctate conmigo en LinkedIn"
+        class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-400"
       >
-        <i class="fab fa-linkedin text-2xl"></i>
+        LinkedIn
       </a>
       <a
-        href="https://twitter.com/tuusuario"
+        href="mailto:aldairgguer@gmail.com"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-blue-500 hover:text-blue-400"
-        aria-label="Sígueme en Twitter"
+        class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-400"
       >
-        <i class="fab fa-twitter text-2xl"></i>
+        Gmail
+      </a>
+      <a
+        href="https://www.instagram.com/g24aldair"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-400"
+      >
+        Instagram
       </a>
     </div>
-  </section>
+  </div>
 </Layout>

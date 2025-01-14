@@ -1,38 +1,105 @@
-<nav class="w-full">
-  <div class="max-w-7xl mx-auto px-4 py-6">
-    <div class="flex justify-center space-x-32 text-white">
+<nav class="w-full bg-gray-800">
+  <div
+    class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between text-white"
+  >
+    <!-- Logo -->
+    <div class="text-xl font-bold">
+      <a href="/">Mi Portafolio</a>
+    </div>
+
+    <!-- Botón hamburguesa para móviles -->
+    <button
+      id="menu-toggle"
+      class="text-white md:hidden focus:outline-none"
+      aria-label="Abrir menú"
+    >
+      <!-- Ícono dinámico -->
+      <svg
+        id="icon-open"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="w-6 h-6 block"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg
+        id="icon-close"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="w-6 h-6 hidden"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Links de navegación -->
+    <div
+      id="menu"
+      class="hidden flex-col md:flex md:flex-row md:space-x-8 text-center space-y-4 md:space-y-0"
+    >
       <a
         href="/"
-        class={Astro.url.pathname === "/"
-          ? "text-cyan-500 pointer-events-none"
-          : "hover:text-cyan-500"}
+        class="hover:text-cyan-500 md:hover:text-cyan-400 transition-colors"
       >
         Inicio
       </a>
       <a
         href="/about"
-        class={Astro.url.pathname === "/about"
-          ? "text-cyan-500 pointer-events-none"
-          : "hover:text-cyan-500"}
+        class="hover:text-cyan-500 md:hover:text-cyan-400 transition-colors"
       >
         Sobre Mí
       </a>
       <a
         href="/projects"
-        class={Astro.url.pathname === "/projects"
-          ? "text-cyan-500 pointer-events-none"
-          : "hover:text-cyan-500"}
+        class="hover:text-cyan-500 md:hover:text-cyan-400 transition-colors"
       >
         Proyectos
       </a>
       <a
         href="/contact"
-        class={Astro.url.pathname === "/contact"
-          ? "text-cyan-500 pointer-events-none"
-          : "hover:text-cyan-500"}
+        class="hover:text-cyan-500 md:hover:text-cyan-400 transition-colors"
       >
         Contactos
       </a>
     </div>
   </div>
 </nav>
+
+<script>
+  const toggleButton = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  toggleButton.addEventListener("click", () => {
+    // Alternar clases para mostrar/ocultar el menú
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+
+    // Cambiar el ícono según el estado del menú
+    iconOpen.classList.toggle("hidden");
+    iconClose.classList.toggle("hidden");
+  });
+
+  // Cerrar el menú al hacer clic fuera
+  document.addEventListener("click", (e) => {
+    if (!toggleButton.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.add("hidden");
+      menu.classList.remove("flex");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+    }
+  });
+</script>

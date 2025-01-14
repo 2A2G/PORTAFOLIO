@@ -3,6 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import image1 from "../img/icon2.png";
 import image2 from "../img/icon2.png";
 import image3 from "../img/icon2.png";
+
+const images = [
+  {
+    src: image1.src,
+    alt: "Vista de la página principal del sistema StudentChoice",
+  },
+  {
+    src: image2.src,
+    alt: "Captura de una pantalla de votación en StudentChoice",
+  },
+  {
+    src: image3.src,
+    alt: "Vista de los resultados de las elecciones en StudentChoice",
+  },
+];
 ---
 
 <Layout title="Proyectos">
@@ -14,22 +29,23 @@ import image3 from "../img/icon2.png";
     <section class="bg-dark-gray p-8 rounded-lg shadow-lg text-white">
       <article class="flex flex-wrap md:flex-nowrap items-center gap-6">
         <!-- Contenedor de imágenes superpuestas -->
-        <div class="relative w-full md:w-1/2 h-80 md:h-96">
-          <img
-            src={image1.src}
-            alt="Vista de la página principal del sistema StudentChoice"
-            class="absolute top-0 left-0 w-4/5 h-full object-cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 hover:rotate-2 z-30"
-          />
-          <img
-            src={image2.src}
-            alt="Captura de una pantalla de votación en StudentChoice"
-            class="absolute top-5 left-10 w-4/5 h-full object-cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 hover:rotate-2 z-20"
-          />
-          <img
-            src={image3.src}
-            alt="Vista de los resultados de las elecciones en StudentChoice"
-            class="absolute top-10 left-20 w-4/5 h-full object-cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 hover:rotate-2 z-10"
-          />
+        <div class="relative w-full md:w-1/2 h-80 md:h-96 image-container">
+          {
+            images.map((img, index) => (
+              <img
+                key={index}
+                src={img.src}
+                alt={img.alt}
+                class={`absolute w-4/5 h-full object-cover rounded-lg shadow-lg transition-all duration-1000 ease-in-out ${
+                  index === 0
+                    ? "z-30 top-0 left-0"
+                    : index === 1
+                      ? "z-20 top-5 left-10"
+                      : "z-10 top-10 left-20"
+                }`}
+              />
+            ))
+          }
         </div>
 
         <!-- Información del proyecto -->
@@ -60,18 +76,30 @@ import image3 from "../img/icon2.png";
             y modernidad en el proceso electoral.
           </p>
           <h3 class="text-2xl font-semibold mb-2">Tecnologías:</h3>
-          <ul class="list-none flex flex-wrap space-x-4">
-            <li class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg">Laravel</li>
-            <li class="px-3 py-1 bg-green-500 rounded-lg shadow-lg">
+          <ul class="list-none flex flex-wrap gap-2 md:gap-4">
+            <li
+              class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
+              Laravel
+            </li>
+            <li
+              class="px-3 py-1 bg-green-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
               Jetstream
             </li>
-            <li class="px-3 py-1 bg-purple-500 rounded-lg shadow-lg">
+            <li
+              class="px-3 py-1 bg-purple-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
               Livewire
             </li>
-            <li class="px-3 py-1 bg-teal-500 rounded-lg shadow-lg">
+            <li
+              class="px-3 py-1 bg-teal-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
               Tailwind CSS
             </li>
-            <li class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg">
+            <li
+              class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
               PostgreSQL
             </li>
           </ul>
@@ -86,4 +114,24 @@ import image3 from "../img/icon2.png";
       </article>
     </section>
   </div>
+
+  <!-- Script para rotación automática -->
+  <script>
+    let currentIndex = 0;
+    const imageContainer = document.querySelector(".image-container");
+    const images = imageContainer.querySelectorAll("img");
+
+    setInterval(() => {
+      images.forEach((img, i) => {
+        img.classList.remove("z-30", "z-20", "z-10");
+        img.style.transform = `translateY(${i === currentIndex ? "-10px" : "0"})`;
+      });
+
+      currentIndex = (currentIndex + 1) % images.length;
+
+      images[currentIndex].classList.add("z-30");
+      images[(currentIndex + 1) % images.length].classList.add("z-20");
+      images[(currentIndex + 2) % images.length].classList.add("z-10");
+    }, 3000);
+  </script>
 </Layout>
