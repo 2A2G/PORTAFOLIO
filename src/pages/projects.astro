@@ -1,12 +1,89 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import CardProjects from "../components/Card.projects.astro";
-
+import image1 from "../img/icon2.png";
+import image2 from "../img/icon2.png";
+import image3 from "../img/icon2.png";
 ---
 
 <Layout title="Proyectos">
-  <div class="mx-auto px-4 py-8">
-    <CardProjects />
+  <div class="mx-auto px-4 py-24 bg-gray-900 text-white">
+    <h1 class="text-4xl md:text-6xl font-bold text-white text-center mb-12">
+      Proyectos
+    </h1>
+
+    <section class="bg-dark-gray p-8 rounded-lg shadow-lg text-white">
+      <article class="flex flex-wrap md:flex-nowrap items-center gap-6">
+        <!-- Contenedor de imágenes superpuestas -->
+        <div class="relative w-full md:w-1/2 h-80 md:h-96">
+          <img
+            src={image1.src}
+            alt="Vista de la página principal del sistema StudentChoice"
+            class="absolute top-0 left-0 w-4/5 h-full object-cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 hover:rotate-2 z-30"
+          />
+          <img
+            src={image2.src}
+            alt="Captura de una pantalla de votación en StudentChoice"
+            class="absolute top-5 left-10 w-4/5 h-full object-cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 hover:rotate-2 z-20"
+          />
+          <img
+            src={image3.src}
+            alt="Vista de los resultados de las elecciones en StudentChoice"
+            class="absolute top-10 left-20 w-4/5 h-full object-cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 hover:rotate-2 z-10"
+          />
+        </div>
+
+        <!-- Información del proyecto -->
+        <div class="w-full md:w-1/2 mt-8 md:mt-0 md:pl-8">
+          <h2 class="text-3xl font-semibold mb-4">StudentChoice</h2>
+          <p class="mb-6">
+            Sistema de votación estudiantil desarrollado en <span
+              class="font-bold">Laravel</span
+            >, utilizando <span class="font-bold">Jetstream</span>, <span
+              class="font-bold">Livewire</span
+            > y
+            <span class="font-bold">Tailwind CSS</span>, junto a una base de
+            datos relacional como
+            <span class="font-bold">PostgreSQL</span>. Garantiza un proceso de
+            votación seguro, eficiente y fácil de usar.
+          </p>
+          <ul class="list-disc pl-6 mb-6">
+            <li>Autenticación de usuarios y gestión de roles.</li>
+            <li>
+              Panel de administración para gestionar elecciones y candidatos.
+            </li>
+            <li>Resultados confiables e inmutables.</li>
+            <li>Interfaz moderna y accesible.</li>
+          </ul>
+          <h3 class="text-2xl font-semibold mb-2">Rol:</h3>
+          <p class="mb-4">
+            Desarrollo completo del sistema, asegurando la eficiencia, seguridad
+            y modernidad en el proceso electoral.
+          </p>
+          <h3 class="text-2xl font-semibold mb-2">Tecnologías:</h3>
+          <ul class="list-none flex flex-wrap space-x-4">
+            <li class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg">Laravel</li>
+            <li class="px-3 py-1 bg-green-500 rounded-lg shadow-lg">
+              Jetstream
+            </li>
+            <li class="px-3 py-1 bg-purple-500 rounded-lg shadow-lg">
+              Livewire
+            </li>
+            <li class="px-3 py-1 bg-teal-500 rounded-lg shadow-lg">
+              Tailwind CSS
+            </li>
+            <li class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg">
+              PostgreSQL
+            </li>
+          </ul>
+          <a
+            href="https://github.com/2A2G/StudentChoice"
+            target="_blank"
+            class="mt-6 inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+          >
+            Ver proyecto
+          </a>
+        </div>
+      </article>
+    </section>
   </div>
 </Layout>

@@ -1,8 +1,93 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Aboutme from "../components/Card.about.astro";
+import icon from "../img/icon2.png";
 ---
 
-<Layout title="About Me">
-  <Aboutme />
+<Layout title="Sobre mí">
+  <div class="mx-auto px-4 py-24 bg-gray-900 text-white">
+    <!-- Título principal -->
+    <div class="text-center mb-12">
+      <h1 class="text-5xl md:text-6xl font-bold">
+        Hola, soy <span class="text-blue-400">Aldair Gutierrez</span>
+      </h1>
+      <p class="text-xl md:text-2xl font-medium mt-4">
+        Desarrollador Backend apasionado por la tecnología y las soluciones
+        innovadoras.
+      </p>
+    </div>
+
+    <!-- Introducción -->
+    <div class="max-w-4xl mx-auto mb-16 text-center">
+      <p class="text-lg md:text-xl leading-relaxed">
+        Soy Tecnólogo en Desarrollo de Software, egresado de la
+        <span class="text-blue-400"
+          >Fundación Universitaria Tecnológico Comfenalco</span
+        >, y actualmente curso Ingeniería de Sistemas. Me apasiona resolver
+        problemas complejos y transformar ideas en soluciones funcionales,
+        siempre buscando mejorar mis habilidades y aprender nuevas tecnologías.
+        Amo el desarrollo backend y la eficiencia que aporta a los proyectos.
+      </p>
+    </div>
+
+    <!-- Habilidades -->
+    <div class="max-w-5xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-center">
+        Mis Habilidades Técnicas
+      </h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-lg">
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> Java
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> PHP & Laravel
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> Spring Boot
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> PostgreSQL
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> Docker
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> Node.js
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> Git
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-400 text-2xl mr-3">✔</span> Postman
+        </li>
+      </ul>
+    </div>
+
+    <!-- Certificados -->
+    <div class="max-w-5xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-center">
+        Certificados
+      </h2>
+      <ul class="space-y-4 text-lg text-center">
+        <li>📜 <span class="text-blue-400">Git y GitHub</span> - Platzi</li>
+        <li>
+          📜 <span class="text-blue-400">Fundamentos de Node.js</span> - Platzi
+        </li>
+      </ul>
+    </div>
+
+    <!-- Imagen y CTA -->
+    <div class="text-center mt-16">
+      <img
+        src={icon.src}
+        alt="Aldair"
+        class="rounded-full object-cover w-40 h-40 mx-auto mb-8 shadow-lg"
+      />
+      <a
+        href="/projects"
+        class="px-6 py-3 bg-blue-400 text-black font-semibold rounded-lg hover:bg-blue-500 transition"
+      >
+        Explora Mis Proyectos
+      </a>
+    </div>
+  </div>
 </Layout>
