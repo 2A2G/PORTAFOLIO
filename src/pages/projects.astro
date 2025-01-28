@@ -111,6 +111,89 @@ const images = [
         </div>
       </article>
     </section>
+
+    <section class="bg-dark-gray p-8 rounded-lg shadow-lg text-white">
+      <article class="flex flex-wrap md:flex-nowrap items-center gap-6">
+        <div class="relative w-full md:w-1/2 h-80 md:h-96 image-container">
+          {
+            images.map((img, index) => (
+              <img
+                key={index}
+                src={img.src}
+                alt={img.alt}
+                class={`absolute w-4/5 h-full object-cover rounded-lg shadow-lg transition-all duration-1000 ease-in-out ${
+                  index === 0
+                    ? "z-30 top-0 left-0"
+                    : index === 1
+                      ? "z-20 top-5 left-10"
+                      : "z-10 top-10 left-20"
+                }`}
+              />
+            ))
+          }
+        </div>
+
+        <div class="w-full md:w-1/2 mt-8 md:mt-0 md:pl-8">
+          <h2 class="text-3xl font-semibold mb-4">E-Factura</h2>
+          <p class="mb-6">
+            E-Factura es un sistema diseñado para implementar la facturación
+            electrónica a través de la integración con las API’s de Factus
+            Halltec. Este proyecto automatiza y facilita el proceso de
+            facturación, asegurando el cumplimiento de las normativas legales
+            vigentes y optimizando los flujos de trabajo.
+          </p>
+          <ul class="list-disc pl-6 mb-6">
+            <li>Generación automática de facturas electrónicas.</li>
+            <li>Validación precisa de la información fiscal.</li>
+            <li>Envío seguro de facturas a las entidades correspondientes.</li>
+            <li>
+              Mantenimiento de un registro organizado de facturas emitidas.
+            </li>
+          </ul>
+          <h3 class="text-2xl font-semibold mb-2">Rol:</h3>
+          <p class="mb-4">
+            Desarrollo integral del sistema, garantizando la eficiencia, la
+            seguridad y el cumplimiento de los requisitos legales en el proceso
+            de facturación electrónica.
+          </p>
+          <h3 class="text-2xl font-semibold mb-2">Tecnologías:</h3>
+          <ul class="list-none flex flex-wrap gap-2 md:gap-4">
+            <li
+              class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
+              Laravel
+            </li>
+            <li
+              class="px-3 py-1 bg-green-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
+              Jetstream
+            </li>
+            <li
+              class="px-3 py-1 bg-purple-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
+              Livewire
+            </li>
+            <li
+              class="px-3 py-1 bg-teal-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
+              Tailwind CSS
+            </li>
+            <li
+              class="px-3 py-1 bg-blue-500 rounded-lg shadow-lg w-full sm:w-auto text-center"
+            >
+              PostgreSQL
+            </li>
+          </ul>
+          <a
+            href="https://github.com/2A2G/E-Factura"
+            target="_blank"
+            class="mt-6 inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+          >
+            Ver proyecto
+          </a>
+        </div>
+      </article>
+    </section>
   </div>
 
   <script>
